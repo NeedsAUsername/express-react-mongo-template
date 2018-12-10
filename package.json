@@ -1,0 +1,22 @@
+{
+  "name": "social",
+  "version": "1.0.0",
+  "description": "Social Media Site ",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NeedsAUsername/social-media.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NeedsAUsername/social-media/issues"
+  },
+  "homepage": "https://github.com/NeedsAUsername/social-media#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
