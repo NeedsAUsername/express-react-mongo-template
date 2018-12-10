@@ -9,10 +9,5 @@ const homeRoute = require('./routes/home');
 server.use(express.static(__dirname + '/public'));
 server.use(homeRoute);
 
-// Moved to the routes folder
-// app.get('/', (req, res) => {
-//   res.sendFile(path.join(__dirname, 'view', 'index.html'));
-// })
-
-const port
-server.listen(3000);
+const PORT = process.env.PORT || 3000;
+server.listen(PORT, () => {console.log('Server started on ' + PORT)});
