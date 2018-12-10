@@ -5,6 +5,7 @@ const path = require('path');
 // body-parser extracts the entire body portion of an incoming request stream and exposes it on req.body.
 const bodyParser = require('body-parser');
 
+app.use(express.static(__dirname + '/public'));
 // Move to a routes folder later
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'view', 'index.html'));
