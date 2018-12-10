@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../view/index.html'));
 })
 
-router.get('/users', (req, res) => {
+router.get('/api/users', (req, res) => {
   const users = [
     {id: 1, firstName: 'Bob'},
     {id: 2, firstName: 'Mary'}
