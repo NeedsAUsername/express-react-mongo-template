@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 
 // Move to a routes folder later
 app.get('/', (req, res) => {
-  res.send('hello');
+  res.sendFile(path.join(__dirname, 'view', 'index.html'));
 })
+
 app.listen(3000);
