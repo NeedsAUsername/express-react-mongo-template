@@ -1,5 +1,6 @@
 import React from 'react';
 import './auth.css';
+import AuthInput from './input.js';
 
 class Auth extends React.Component {
   // Todo:
@@ -7,7 +8,10 @@ class Auth extends React.Component {
   // If not, show button to signup/login
   render () {
     return (
-      <div>Auth Component</div>
+      <div>
+        <h1>Auth Component</h1>
+        <AuthInput />
+      </div>
     )
   }
 }
