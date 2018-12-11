@@ -5,7 +5,8 @@ const path = require('path');
 router.get('/', (req, res) => {
   // Using __dirname gives an absolute path
   // resolve lets us use relative path notation
-  res.sendFile(path.resolve(__dirname, '../view/index.html'));
+  // res.sendFile(path.resolve(__dirname, '../view/index.html'));
+  res.send('/api/users for user data')
 })
 
 router.get('/api/users', (req, res) => {
