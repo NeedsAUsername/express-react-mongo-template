@@ -25,7 +25,7 @@ mongo ds229878.mlab.com:29878/social-media -u contributor -p password1
 - Create/Edit Database Models (Users, Posts, etc.)  
 
 Routes/Pages to create in React, with endpoints in Express API to fetch info:
-- SignUp/Login('/'): If user not logged in, show forms to sign up/log in
+- SignUp/Login('/'): If user not logged in, show option to sign up/log in
 - Main Page('/'): All posts are shown. Text for now(like Twitter), later enable other content/pics/vids/etc.(like reddit).
 - User Page('/user'): Should show user's posts, with options to edit/delete.
 - Account Page('/settings'): Should show user info(email, name), and options to edit/delete account
