@@ -14,10 +14,12 @@ to start Express server: npm run server
 to start React server: npm run client  
 to start both: npm run dev
 
+to connect to mongo shell in terminal:
+mongo ds229878.mlab.com:29878/social-media -u contributor -p password1
 # Current Goal:
 - Build a basic site, with users able to create posts and see all posts.
 
-#ToDos:
+# ToDos:
 - Set Up User Authentication
   - JWT token auth?
 - Create/Edit Database Models (Users, Posts, etc.)  
