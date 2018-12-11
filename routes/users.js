@@ -16,7 +16,7 @@ userRouter.get('/api/users', (req, res) => {
   .then(doc => {
     res.json(doc);
   })
-  .catch(err => res.status)
+  .catch(err => res.status(500).json(err))
 })
 
 // create

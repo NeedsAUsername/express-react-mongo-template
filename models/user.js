@@ -1,4 +1,5 @@
 let mongoose = require('mongoose');
+mongoose.set('useCreateIndex', true);
 mongoose.connect('mongodb:' + process.env.MONGO_URI, { useNewUrlParser: true });
 
 let UserSchema = new mongoose.Schema({
