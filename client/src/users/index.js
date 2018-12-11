@@ -15,7 +15,7 @@ class Users extends React.Component {
     }, ()=> console.log(this.state)))
   }
 
-  renderUsers = () => (this.state.users.map(user => <li key={user.id}>{user.firstName}</li>)
+  renderUsers = () => (this.state.users.map(user => <li key={user.id}>{user.name}</li>)
   )
 
   render () {
