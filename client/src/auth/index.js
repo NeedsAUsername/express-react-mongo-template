@@ -4,8 +4,8 @@ import AuthInput from './input.js';
 
 class Auth extends React.Component {
   // Todo:
+  // SignUp/Login actions to Express API
   // If user is logged in, show button to logout
-  // If not, show buttons to signup/login
   state = {
     formShown: false
   }
@@ -15,13 +15,13 @@ class Auth extends React.Component {
       formShown: form
     }, () => console.log(this.state))
   }
-  formAction = (e) => {
+  formAction = (e, formData) => {
     e.preventDefault();
     if (this.state.formShown === "signup") {
-      console.log("signing up")
+      alert("signing up as " + formData.email)
       //signup action here to Express
     } else if (this.state.formShown === "login") {
-      console.log("logging in")
+      alert("logging in as " + formData.email)
       //login action here to Express
     }
   }
