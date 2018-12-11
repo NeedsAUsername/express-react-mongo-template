@@ -15,4 +15,4 @@ server.use(homeRouter);
 server.use(userRouter);
 
 const PORT = process.env.PORT || 5000;
-server.listen(PORT, () => {console.log('Server started on ' + PORT)});
+server.listen(PORT, () => {console.log('Express Server started on ' + PORT)});
