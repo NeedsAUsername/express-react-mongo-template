@@ -13,7 +13,17 @@ class Auth extends React.Component {
     e.preventDefault();
     this.setState({
       formShown: form
-    })
+    }, () => console.log(this.state))
+  }
+  formAction = (e) => {
+    e.preventDefault();
+    if (this.state.formShown === "signup") {
+      console.log("signing up")
+      //signup action here to Express
+    } else if (this.state.formShown === "login") {
+      console.log("logging in")
+      //login action here to Express
+    }
   }
   render () {
     return (
@@ -21,7 +31,7 @@ class Auth extends React.Component {
         <h1>Auth Component</h1>
         <button onClick={(e) => this.handleClick(e, "login")}>Login</button>
         <button onClick={(e) => this.handleClick(e, "signup")}>Signup</button>
-        {this.state.formShown ? <AuthInput title={this.state.formShown}/> : null}
+        {this.state.formShown ? <AuthInput title={this.state.formShown} formAction={this.formAction}/> : null}
       </div>
     )
   }
