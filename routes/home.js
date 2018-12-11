@@ -3,9 +3,7 @@ const router = express.Router();
 const path = require('path');
 
 router.get('/', (req, res) => {
-  // Using __dirname gives an absolute path
-  // resolve lets us use relative path notation
-  res.sendFile(path.resolve(__dirname, '../view/index.html'));
+  res.send('/api/users for user data')
 })
 
 module.exports = router;
