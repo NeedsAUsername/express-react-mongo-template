@@ -4,7 +4,7 @@ import AuthInput from './input.js';
 
 class Auth extends React.Component {
   // Todo:
-  // SignUp/Login actions to Express API
+  // Login action to Express API
   // If user is logged in, show button to logout
   state = {
     formShown: false
@@ -15,11 +15,22 @@ class Auth extends React.Component {
       formShown: form
     }, () => console.log(this.state))
   }
+  // later move to redux/mobx/etc. b/c right now, we need to refresh to see the new user, since our users component and auth component don't share state. 
   formAction = (e, formData) => {
     e.preventDefault();
     if (this.state.formShown === "signup") {
-      alert("signing up as " + formData.email)
-      //signup action here to Express
+      console.log("signing up as " + formData.email);
+      fetch('/api/users', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        accepts: 'application/json',
+        body: JSON.stringify(formData)
+      }).then(response => response.json())
+        .then(json => {
+          alert(JSON.stringify(json));
+        })
     } else if (this.state.formShown === "login") {
       alert("logging in as " + formData.email)
       //login action here to Express

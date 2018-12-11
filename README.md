@@ -23,6 +23,7 @@ mongo ds229878.mlab.com:29878/social-media -u contributor -p password1
 - Set Up User Authentication
   - JWT token auth?
 - Create/Edit Database Models (Users, Posts, etc.)  
+- Incorporate redux/mobx/state management 
 
 Routes/Pages to create in React, with endpoints in Express API to fetch info:
 - SignUp/Login('/'): If user not logged in, show option to sign up/log in
