@@ -2,7 +2,7 @@ const express = require('express');
 const userRouter = express.Router();
 const User = require('../models/user');
 
-userRouter.get('/api/users', (req, res) => {
+userRouter.get('/api/test', (req, res) => {
   const users = [
     {id: 1, name: 'Bob'},
     {id: 2, name: 'Mary'}
@@ -10,7 +10,16 @@ userRouter.get('/api/users', (req, res) => {
   res.json(users);
 })
 
-// create new user
+// index
+userRouter.get('/api/users', (req, res) => {
+  User.find()
+  .then(doc => {
+    res.json(doc);
+  })
+  .catch(err => res.status)
+})
+
+// create
 userRouter.post('/api/users', (req, res) => {
   if (!req.body) {
     return res.status(400).send('Request body is missing');
