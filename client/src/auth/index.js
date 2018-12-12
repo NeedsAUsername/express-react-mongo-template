@@ -16,8 +16,7 @@ class Auth extends React.Component {
     }, () => console.log(this.state))
   }
   // later move to redux/mobx/etc. b/c right now, we need to refresh to see the new user, since our users component and auth component don't share state.
-  formAction = (e, formData) => {
-    e.preventDefault();
+  formAction = (formData) => {
     if (this.state.formShown === "signup") {
       console.log("signing up as " + formData.email);
       fetch('/api/users', {
@@ -28,7 +27,7 @@ class Auth extends React.Component {
         accepts: 'application/json',
         body: JSON.stringify(formData)
       }).then(response => response.json())
-        .then(json => { 
+        .then(json => {
           alert(JSON.stringify(json));
         })
     } else if (this.state.formShown === "login") {
