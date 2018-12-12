@@ -2,7 +2,8 @@ import React from 'react';
 
 class authInput extends React.Component {
   state = {
-    email: ""
+    email: "",
+    name: ""
   }
   handleChange = (e) => {
     e.preventDefault();
@@ -17,6 +18,8 @@ class authInput extends React.Component {
         <form onSubmit={e => this.props.formAction(e, this.state)}>
           <label htmlFor="email">Email</label>
           <input id="email" type="email" name="email" value={this.state.email} onChange={this.handleChange}/>
+          <label htmlFor="name">Name</label>
+          <input id="name" type="text" name="name" value={this.state.name} onChange={this.handleChange}/>
           <input type="submit" />
         </form>
       </React.Fragment>

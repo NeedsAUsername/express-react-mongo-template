@@ -31,9 +31,9 @@ userRouter.post('/api/users', (req, res) => {
   model.save()
     .then(doc => {
       if (!doc || doc.length === 0) {
-        return res.status(500).send(doc);
+        return res.status(500).send({message: 'user failed to create'});
       } else {
-        return res.status(201).send('user created');
+        return res.status(201).send({message: 'user created'});
       }
     })
     .catch(err => {
