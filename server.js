@@ -7,10 +7,12 @@ const userRouter = require('./routes/users');
 // body-parser extracts the entire body portion of an incoming request stream and exposes it on req.body.
 const bodyParser = require('body-parser');
 // support parsing of application/json type post data
+require('./config/passport');
+
+
 server.use(bodyParser.json());
 //support parsing of application/x-www-form-urlencoded post data
 server.use(bodyParser.urlencoded({ extended: true }));
-
 server.use(homeRouter);
 server.use(userRouter);
 

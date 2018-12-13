@@ -1,6 +1,8 @@
 const express = require('express');
 const userRouter = express.Router();
 const User = require('../models/user');
+const passport = require('passport');
+const auth = require('./auth');
 
 userRouter.get('/api/test', (req, res) => {
   const users = [
