@@ -1,4 +1,7 @@
 const mongoose = require('mongoose');
+const crypto = require('crypto');
+const jwt = require('jsonwebtoken');
+
 mongoose.set('useCreateIndex', true);
 mongoose.connect('mongodb:' + process.env.MONGO_URI, { useNewUrlParser: true });
 
@@ -47,5 +50,5 @@ UserSchema.methods.toAuthJSON = function() {
   };
 };
 
-let user = mongoose.model('User', UserSchema);
-module.exports = user;
+let User = mongoose.model('User', UserSchema);
+module.exports = User;

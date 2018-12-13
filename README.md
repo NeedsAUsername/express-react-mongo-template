@@ -20,13 +20,15 @@ mongo ds229878.mlab.com:29878/social-media -u contributor -p password1
 - Build a basic site, with users able to create posts and see all posts.
 
 # ToDos:
-- Set Up User Authentication
-  - JWT token auth?
-- Create/Edit Database Models (Users, Posts, etc.)  
-- Incorporate redux/mobx/state management 
+- Set Up User Authentication in React side (store token in local storage and include in header)
 
 Routes/Pages to create in React, with endpoints in Express API to fetch info:
 - SignUp/Login('/'): If user not logged in, show option to sign up/log in
 - Main Page('/'): All posts are shown. Text for now(like Twitter), later enable other content/pics/vids/etc.(like reddit).
 - User Page('/user'): Should show user's posts, with options to edit/delete.
 - Account Page('/settings'): Should show user info(email, name), and options to edit/delete account
+
+# Done So Far
+- Connected React
+- Connected MongoDB
+- Set Up User Auth in Express with JWT and Passport
