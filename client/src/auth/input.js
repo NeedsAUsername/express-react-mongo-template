@@ -3,7 +3,8 @@ import React from 'react';
 class authInput extends React.Component {
   state = {
     email: "",
-    name: ""
+    name: "",
+    password: ""
   }
   handleChange = (e) => {
     e.preventDefault();
@@ -24,10 +25,19 @@ class authInput extends React.Component {
       <React.Fragment>
         <h1>{this.props.title}</h1>
         <form onSubmit={this.handleSubmit}>
+
           <label htmlFor="email">Email</label>
-          <input id="email" type="email" name="email" value={this.state.email} onChange={this.handleChange}/>
+          <input id="email" type="email" name="email"
+            value={this.state.email} onChange={this.handleChange}/>
+
           <label htmlFor="name">Name</label>
-          <input id="name" type="text" name="name" value={this.state.name} onChange={this.handleChange}/>
+          <input id="name" type="text" name="name"
+            value={this.state.name} onChange={this.handleChange}/>
+
+          <label htmlFor="password">Password</label>
+          <input id="password" type="text" name="password"
+            value={this.state.password} onChange={this.handleChange}/>
+
           <input type="submit" />
         </form>
       </React.Fragment>

@@ -4,8 +4,9 @@ import AuthInput from './input.js';
 
 class Auth extends React.Component {
   // Todo:
-  // Login action to Express API
+  // On login, set token inside local storage 
   // If user is logged in, show button to logout
+  // Set up redux
   state = {
     formShown: false
   }
@@ -31,8 +32,18 @@ class Auth extends React.Component {
           alert(JSON.stringify(json));
         })
     } else if (this.state.formShown === "login") {
-      alert("logging in as " + formData.email)
-      //login action here to Express
+      console.log("logging in as " + formData.email)
+      fetch('/api/users/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        accepts: 'application/json',
+        body: JSON.stringify({user: formData})
+      }).then(response => response.json())
+        .then(json => {
+          alert(JSON.stringify(json));
+        })
     }
   }
   render () {
