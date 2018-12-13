@@ -12,6 +12,7 @@ userRouter.get('/api/test', (req, res) => {
   res.json(users);
 })
 
+// get current user
 // auth.required = needs JWT token in header (Authorization: Token enterTokenHere)
 userRouter.get('/api/users/current', auth.required, (req, res) => {
   // If authorized, req will have payload with user id.
@@ -23,6 +24,50 @@ userRouter.get('/api/users/current', auth.required, (req, res) => {
       return res.json(doc.toAuthJSON())
     }
   })
+})
+
+// login
+// req should be: {user: {email: email, password: password}}
+userRouter.post('/api/users/login', (req, res) => {
+  let user = req.body;
+  passport.authenticate('local', {session: false}, (err, passportUser, info) => {
+    if(err) {
+      return next(err);
+    }
+    if (passportUser) {
+      const user = passportUser;
+      user.token = passportUser.generateJWT();
+      return res.json(user.toAuthJSON());
+    }
+    return res.status(400).json(info);
+  })(req, res);
+})
+
+// create/signup
+userRouter.post('/api/users', (req, res) => {
+  let user = req.body;
+  if (!user) {
+    return res.status(400).json({error: 'Request body is missing'});
+  } else if (!user.password) {
+    return res.status(400).send({error: 'Password needed'})
+  }
+  /* req.body will be something like:
+    {name: "name", email: "email@email.com"}
+  */
+  let model = new User(user);
+  model.setPassword(user.password);
+  model.save()
+    .then(doc => {
+      if (!doc || doc.length === 0) {
+        return res.status(500).json({error: 'user failed to save'});
+      } else {
+        // toAuthJSON gives user json with JWT token to include in header of future requests
+        return res.status(201).json(model.toAuthJSON());
+      }
+    })
+    .catch(err => {
+      res.status(500).json(err);
+    })
 })
 
 // show. to be used for displaying other user's profile(name, email only)
@@ -42,32 +87,6 @@ userRouter.get('/api/users', (req, res) => {
     res.json(doc);
   })
   .catch(err => res.status(500).json(err))
-})
-
-// create
-userRouter.post('/api/users', (req, res) => {
-  if (!req.body) {
-    return res.status(400).json({error: 'Request body is missing'});
-  } else if (!req.body.password) {
-    return res.status(400).send({error: 'Password needed'})
-  }
-  /* req.body will be something like:
-    {name: "name", email: "email@email.com"}
-  */
-  let model = new User(req.body);
-  model.setPassword(req.body.password);
-  model.save()
-    .then(doc => {
-      if (!doc || doc.length === 0) {
-        return res.status(500).json({error: 'user failed to save'});
-      } else {
-        // toAuthJSON gives user json with JWT token to include in header of future requests
-        return res.status(201).json(model.toAuthJSON());
-      }
-    })
-    .catch(err => {
-      res.status(500).json(err);
-    })
 })
 
 
