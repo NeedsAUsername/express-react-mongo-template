@@ -10,6 +10,16 @@ userRouter.get('/api/test', (req, res) => {
   res.json(users);
 })
 
+// TODO: Set Up User auth, and create a get '/api/users/current' for current user
+// show
+userRouter.get('/api/users/:id', (req, res) => {
+  User.find({_id: req.params.id})
+  .then(doc => {
+    res.json(doc);
+  })
+  .catch(err => res.status(500).json(err))
+})
+
 // index
 userRouter.get('/api/users', (req, res) => {
   User.find()
@@ -40,5 +50,6 @@ userRouter.post('/api/users', (req, res) => {
       res.status(500).json(err);
     })
 })
+
 
 module.exports = userRouter;
