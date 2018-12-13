@@ -4,24 +4,27 @@
 # Tech Used
 - React, Express, MongoDB
 # Setup
-npm install
+$ npm install
 
-npm run client-install
+$ npm run client-install
 
 create an .env file at root with the following (to access database):
 
 MONGO_URI="//contributor:password1@ds229878.mlab.com:29878/social-media"
 
 
-to start Express server: npm run server
+to start Express server:
+$ npm run server
 
-to start React server: npm run client  
+to start React server:
+$ npm run client  
 
-to start both: npm run dev
+to start both servers:
+$ npm run dev
 
 
 to connect to mongo shell in terminal:
-mongo ds229878.mlab.com:29878/social-media -u contributor -p password1
+$ mongo ds229878.mlab.com:29878/social-media -u contributor -p password1
 
 # Current Goal:
 - Build a basic site, with users able to create posts and see all posts.
