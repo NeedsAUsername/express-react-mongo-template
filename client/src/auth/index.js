@@ -29,13 +29,22 @@ class Auth extends React.Component {
       alert("error - check state formShown value");
     }
   }
+  renderButtons = () => (
+    <React.Fragment>
+      <button onClick={(e) => this.handleClick(e, "login")}>Login</button>
+      <button onClick={(e) => this.handleClick(e, "signup")}>Signup</button>
+      {this.state.formShown ? this.renderForm() : null}
+    </React.Fragment>
+  )
+  renderForm = () => (
+    <AuthInput title={this.state.formShown} formAction={this.formAction}/>
+  )
   render () {
+    //ToDo: Make button logout
     return (
       <div>
         <h1>Auth Component</h1>
-        <button onClick={(e) => this.handleClick(e, "login")}>Login</button>
-        <button onClick={(e) => this.handleClick(e, "signup")}>Signup</button>
-        {this.state.formShown ? <AuthInput title={this.state.formShown} formAction={this.formAction}/> : null}
+        {this.props.loggedIn ? <button>Logout</button> : this.renderButtons()}
       </div>
     )
   }
