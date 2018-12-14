@@ -1,8 +1,8 @@
 function currentUserReducer(state = {
   authenticated: false,
-  _id: "1234",
-  name: "testing",
-  email: "testing@testing.com",
+  _id: "",
+  name: "",
+  email: "",
   posts: [{title: "testPost", content: "testContent"}],
   logging_in: false
 }, action) {
@@ -35,7 +35,6 @@ function currentUserReducer(state = {
       return {...state, loggingIn: true}
 
     case 'LOAD_CURRENT_USER':
-      debugger
       return {...state, loggingIn: false, authenticated: true,
         email: email, _id: _id}
     default:
