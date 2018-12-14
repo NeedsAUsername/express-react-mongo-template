@@ -1,10 +1,13 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import './auth.css';
 import AuthInput from './input.js';
+import {signup} from '../actions/auth/signup';
+import {login} from '../actions/auth/login';
 
 class Auth extends React.Component {
   // Todo:
-  // On login, set token inside local storage 
+  // On login, set token inside local storage
   // If user is logged in, show button to logout
   // Set up redux
   state = {
@@ -17,33 +20,9 @@ class Auth extends React.Component {
     }, () => console.log(this.state))
   }
   // later move to redux/mobx/etc. b/c right now, we need to refresh to see the new user, since our users component and auth component don't share state.
-  formAction = (formData) => {
-    if (this.state.formShown === "signup") {
-      console.log("signing up as " + formData.email);
-      fetch('/api/users', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        accepts: 'application/json',
-        body: JSON.stringify(formData)
-      }).then(response => response.json())
-        .then(json => {
-          alert(JSON.stringify(json));
-        })
-    } else if (this.state.formShown === "login") {
-      console.log("logging in as " + formData.email)
-      fetch('/api/users/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        accepts: 'application/json',
-        body: JSON.stringify({user: formData})
-      }).then(response => response.json())
-        .then(json => {
-          alert(JSON.stringify(json));
-        })
+  formAction = (formState) => {
+    if (this.formShown === "signup") {
+      this.props.signup(formState)
     }
   }
   render () {
@@ -57,5 +36,10 @@ class Auth extends React.Component {
     )
   }
 }
+const mapStateToProps = (store) => {
+  return {
+    loggedIn: store.currentUser.authenticated
+  }
+}
 
-export default Auth;
+export default connect(mapStateToProps, {signup, login})(Auth);

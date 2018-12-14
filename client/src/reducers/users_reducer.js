@@ -3,8 +3,8 @@ function usersReducer(state = {
   usersList: []
 }, action) {
   console.log(action);
-  if (action.payload && action.payload.error) {
-    alert(action.payload.error);
+  if (action.error) {
+    alert(action.error);
     return state;
   }
 

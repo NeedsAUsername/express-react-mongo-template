@@ -12,7 +12,7 @@ export function fetchUsers() {
     .catch(err => {
       dispatch({
         type: 'ERROR',
-        payload: {error: err}
+        error: err
       })
     })
   }
