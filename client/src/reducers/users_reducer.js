@@ -4,9 +4,13 @@ function usersReducer(state = {
   usersList: []
 }, action) {
   console.log(action);
-  if (action.error) {
-    alert(action.error);
-    return state;
+  if (action.error || (action.payload && action.payload.error)) {
+    alert(JSON.stringify(action.error) || JSON.stringify(action.payload.error));
+    return {
+      ...state,
+      loading: false,
+      signingUp: false,
+    };
   }
 
   switch(action.type) {

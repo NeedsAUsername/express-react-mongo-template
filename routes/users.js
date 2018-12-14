@@ -32,14 +32,14 @@ userRouter.post('/api/users/login', (req, res) => {
   let user = req.body;
   passport.authenticate('local', {session: false}, (err, passportUser, info) => {
     if(err) {
-      return next(err);
+      return res.json({error: err});
     }
     if (passportUser) {
       const user = passportUser;
       user.token = passportUser.generateJWT();
       return res.json(user.toAuthJSON());
     }
-    return res.status(400).json(info);
+    return res.status(400).json({error: info});
   })(req, res);
 })
 
@@ -66,7 +66,7 @@ userRouter.post('/api/users', (req, res) => {
       }
     })
     .catch(err => {
-      res.status(500).json(err);
+      res.status(500).json({error: err});
     })
 })
 
@@ -77,7 +77,7 @@ userRouter.get('/api/users/:id', (req, res) => {
     // change to name/email only later
     res.json(doc);
   })
-  .catch(err => res.status(500).json(err))
+  .catch(err => res.status(500).json({error: err}))
 })
 
 // index
@@ -86,7 +86,7 @@ userRouter.get('/api/users', (req, res) => {
   .then(doc => {
     res.json(doc);
   })
-  .catch(err => res.status(500).json(err))
+  .catch(err => res.status(500).json({error: err}))
 })
 
 

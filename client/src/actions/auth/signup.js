@@ -11,7 +11,6 @@ export function signup(formState) {
     })
     .then(response => response.json())
     .then(user => {
-      alert(JSON.stringify(user));
       dispatch({
         type: 'SIGN_UP',
         payload: user

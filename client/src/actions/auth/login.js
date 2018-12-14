@@ -6,21 +6,21 @@ export function login(formState) {
       headers: {
         'Content-Type': 'application/json'
       },
-      accepts: 'application/json',
+      accepts: 'application/json', 
       body: JSON.stringify({user: formState})
-    }).then(response => response.json())
-      .then(user => {
-        alert(JSON.stringify(user));
-        dispatch({
-          type: 'LOG_IN',
-          payload: user
-        })
+    })
+    .then(response => response.json())
+    .then(user => {
+      dispatch({
+        type: 'LOG_IN',
+        payload: user
       })
-      .catch(err => {
-        dispatch({
-          type: 'ERROR',
-          error: err
-        })
+    })
+    .catch(err => {
+      dispatch({
+        type: 'ERROR',
+        error: err
       })
+    })
   }
 }
