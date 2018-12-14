@@ -5,10 +5,14 @@ import './App.css';
 import Users from './users';
 import Auth from './auth';
 import {fetchUsers} from './actions/users/fetchUsers';
+import {fetchCurrentUser} from './actions/auth/fetchCurrentUser';
 
 class App extends Component {
   componentDidMount() {
-    this.props.fetchUsers(); 
+    this.props.fetchUsers();
+    if (!!localStorage.token) {
+      this.props.fetchCurrentUser();
+    }
   }
   render() {
     return (
@@ -24,4 +28,4 @@ class App extends Component {
 }
 
 
-export default connect(null, {fetchUsers})(App);
+export default connect(null, {fetchUsers, fetchCurrentUser})(App);
