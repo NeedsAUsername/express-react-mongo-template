@@ -42,10 +42,12 @@ UserSchema.methods.generateJWT = function() {
   }, 'secret');
 }
 
+// this will be sent to client on successful auth
 UserSchema.methods.toAuthJSON = function() {
   return {
     _id: this._id,
     email: this.email,
+    name: this.name,
     token: this.generateJWT(),
   };
 };
