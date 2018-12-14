@@ -1,5 +1,6 @@
 function usersReducer(state = {
   loading: false,
+  signingUp: false,
   usersList: []
 }, action) {
   console.log(action);
@@ -14,7 +15,15 @@ function usersReducer(state = {
 
     case 'LOAD_USERS':
       return {...state, loading: false, usersList: action.payload}
+
+    case 'LOADING_SIGN_UP':
+      return {...state, signingUp: true}
+
+    case 'SIGN_UP':
+      return {...state, signingUp: false, usersList: [...state.usersList, action.payload]}
+
+    default:
+      return state;
   }
-  return state;
 }
 export default usersReducer;

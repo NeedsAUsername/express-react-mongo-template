@@ -13,7 +13,7 @@ export function signup(formState) {
     .then(user => {
       alert(JSON.stringify(user));
       dispatch({
-        type: 'LOG_IN',
+        type: 'SIGN_UP',
         payload: user
       })
     })
