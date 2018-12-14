@@ -1,21 +1,22 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import './users.css';
 
 class Users extends React.Component {
-  state = {
-    users: []
-  }
+  // state = {
+  //   users: []
+  // }
 
-  componentDidMount() {
-    // localhost:5000 in proxy
-    fetch('/api/users')
-    .then(res => res.json())
-    .then(users => this.setState({
-      users: users
-    }, ()=> console.log(this.state)))
-  }
+  // componentDidMount() {
+  //   // localhost:5000 in proxy
+  //   fetch('/api/users')
+  //   .then(res => res.json())
+  //   .then(users => this.setState({
+  //     users: users
+  //   }, ()=> console.log(this.state)))
+  // }
 
-  renderUsers = () => (this.state.users.map(user => <li key={user._id} className="list">Name: {user.name}, Email: {user.email}</li>)
+  renderUsers = () => (this.props.users.map(user => <li key={user._id} className="list">Name: {user.name}, Email: {user.email}</li>)
   )
 
   render () {
@@ -30,4 +31,9 @@ class Users extends React.Component {
   }
 }
 
-export default Users;
+const mapStateToProps = (store) => {
+  return {
+    users: store.users
+  }
+}
+export default connect(mapStateToProps)(Users);
