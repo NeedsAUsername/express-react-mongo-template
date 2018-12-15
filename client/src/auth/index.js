@@ -43,7 +43,6 @@ class Auth extends React.Component {
     //ToDo: Make button logout
     return (
       <div>
-        <h1>Auth Component</h1>
         {this.props.loggedIn ? <button>Logout</button> : this.renderButtons()}
       </div>
     )

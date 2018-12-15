@@ -1,3 +1,17 @@
 .app {
   text-align: center;
+  color: #333333;
+}
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  border-bottom: solid;
+  align-items: center;
+}
+
+.navlink {
+  margin: 10px;
+  text-decoration: none;
 }

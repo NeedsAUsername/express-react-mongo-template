@@ -6,10 +6,10 @@ class Navbar extends React.Component {
 
   render () {
     return (
-      <div>
+      <div className="navbar">
         <h1>Chat Stream</h1>
-        <NavLink to="/" >Home</NavLink>
-        <Auth />
+        <NavLink className="navlink" to="/" >Home</NavLink>
+        <Auth className="navlink"/>
       </div>
     )
   }
