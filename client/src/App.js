@@ -19,8 +19,9 @@ class App extends Component {
       // Later: Setup routes for different pages(user profile, users search, posts, etc.)
       <Router>
         <div className="app">
-          <Users />
-          <Auth />
+          // change component to posts later
+          <Route exact path='/' component={Users} />
+          <Route exact path='/account' component={Auth} />
         </div>
       </Router>
     );
