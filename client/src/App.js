@@ -4,8 +4,10 @@ import {connect} from 'react-redux';
 import './App.css';
 import Users from './users';
 import Auth from './auth';
+import Navbar from './components/navbar';
 import {fetchUsers} from './actions/users/fetchUsers';
 import {fetchCurrentUser} from './actions/auth/fetchCurrentUser';
+
 
 class App extends Component {
   componentDidMount() {
@@ -16,10 +18,11 @@ class App extends Component {
   }
   render() {
     return (
-      // Later: Setup routes for different pages(user profile, users search, posts, etc.)
+      // todo: Setup routes for different pages(user profile, users search, posts, etc.)
+      // change root component to posts instead of users
       <Router>
         <div className="app">
-          // change component to posts later
+          <Navbar />
           <Route exact path='/' component={Users} />
           <Route exact path='/account' component={Auth} />
         </div>
