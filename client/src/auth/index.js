@@ -4,6 +4,7 @@ import './auth.css';
 import AuthInput from './input.js';
 import {signup} from '../actions/auth/signup';
 import {login} from '../actions/auth/login';
+import {logout} from '../actions/auth/logout';
 
 class Auth extends React.Component {
   // Todo:
@@ -43,7 +44,7 @@ class Auth extends React.Component {
     //ToDo: Make button logout
     return (
       <div>
-        {this.props.loggedIn ? <button>Logout</button> : this.renderButtons()}
+        {this.props.loggedIn ? <button onClick={this.props.logout}>Logout</button> : this.renderButtons()}
       </div>
     )
   }
@@ -54,4 +55,4 @@ const mapStateToProps = (store) => {
   }
 }
 
-export default connect(mapStateToProps, {signup, login})(Auth);
+export default connect(mapStateToProps, {signup, login, logout})(Auth);

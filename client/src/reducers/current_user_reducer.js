@@ -31,6 +31,9 @@ function currentUserReducer(state = {
       return {...state, loggingIn: false, authenticated: true,
         email: email, _id: _id, name: name}
 
+    case 'LOG_OUT':
+      return {...state, authenticated: false, _id: "", name: "", email: ""}
+
     case 'LOADING_CURRENT_USER':
       return {...state, loggingIn: true}
 
