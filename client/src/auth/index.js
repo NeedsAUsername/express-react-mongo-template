@@ -30,6 +30,11 @@ class Auth extends React.Component {
       alert("error - check state formShown value");
     }
   }
+  hide = () => {
+    this.setState({
+      formShown: false
+    })
+  }
   renderButtons = () => (
     <React.Fragment>
       <button onClick={(e) => this.handleClick(e, "login")}>Login</button>
@@ -38,7 +43,7 @@ class Auth extends React.Component {
     </React.Fragment>
   )
   renderForm = () => (
-    <AuthInput title={this.state.formShown} formAction={this.formAction}/>
+    <AuthInput title={this.state.formShown} formAction={this.formAction} hide={this.hide}/>
   )
   render () {
     //ToDo: Make button logout

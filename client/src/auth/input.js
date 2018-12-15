@@ -23,7 +23,7 @@ class authInput extends React.Component {
   render () {
     return (
       <React.Fragment>
-        <h1>{this.props.title}</h1>
+        <h1>{this.props.title} <button type="button" onClick={this.props.hide}>Hide</button></h1>
         <form onSubmit={this.handleSubmit}>
 
           <label htmlFor="email">Email</label>
