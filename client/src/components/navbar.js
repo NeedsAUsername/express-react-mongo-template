@@ -5,9 +5,10 @@ import Auth from '../auth';
 class Navbar extends React.Component {
 
   render () {
+    // Replace navbar with site title later
     return (
       <div className="navbar">
-        <h1>Chat Stream</h1>
+        <h1>Navbar</h1>
         <NavLink className="navlink" to="/" >Home</NavLink>
         <Auth className="navlink"/>
       </div>
