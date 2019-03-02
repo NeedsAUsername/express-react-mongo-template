@@ -14,7 +14,7 @@ class Navbar extends React.Component {
   render () {
     return (
       <nav className="navbar">
-        <h1>Medical Database</h1>
+        <h1>Website Title</h1>
         <ul className="navlist">
           {this.renderNavLinks()}
         </ul>
