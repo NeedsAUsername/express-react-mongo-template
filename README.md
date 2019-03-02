@@ -1,6 +1,5 @@
 # Summary
-  - website for logging patient data into a medical database
-  - users are doctors (read only) and admin (read/write)
+  - template for a express/react/mongo app with passport/JWT user authentication and working signup/login/logout forms
 # Features
 - uses my express-react-mongo-template at https://github.com/NeedsAUsername/express-react-mongo-template
   - Connected React
