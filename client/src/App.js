@@ -8,6 +8,10 @@ import Navbar from './components/navbar';
 import {fetchUsers} from './actions/users/fetchUsers';
 import {fetchCurrentUser} from './actions/auth/fetchCurrentUser';
 
+const routes = [
+  {path: '/', name: 'Home', icon: 'fas fa-home'}
+]
+
 
 class App extends Component {
   componentDidMount() {
@@ -22,7 +26,7 @@ class App extends Component {
       // change root component to posts instead of users
       <Router>
         <div className="app">
-          <Navbar />
+          <Navbar routes={routes}/>
           <Route exact path='/' component={Users} />
           <Route exact path='/account' component={Auth} />
         </div>

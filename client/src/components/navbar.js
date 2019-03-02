@@ -3,15 +3,23 @@ import {NavLink} from 'react-router-dom';
 import Auth from '../auth';
 
 class Navbar extends React.Component {
-
+  current = () => ({
+    borderBottom: 'solid',
+    borderColor: 'green',
+    color: 'green'
+  })
+  renderNavLinks = () => (
+    this.props.routes.map((route, index) => <li><NavLink key={index} className="navlink" to={route.path} exact activeStyle={this.current()}><span className="route-name">{route.name}</span><i className={route.icon}></i></NavLink></li>)
+  )
   render () {
-    // Replace navbar with site title later
     return (
-      <div className="navbar">
-        <h1>Navbar</h1>
-        <NavLink className="navlink" to="/" >Home</NavLink>
+      <nav className="navbar">
+        <h1>Medical Database</h1>
+        <ul className="navlist">
+          {this.renderNavLinks()}
+        </ul>
         <Auth className="navlink"/>
-      </div>
+      </nav>
     )
   }
 }

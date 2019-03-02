@@ -7,10 +7,6 @@ import {login} from '../actions/auth/login';
 import {logout} from '../actions/auth/logout';
 
 class Auth extends React.Component {
-  // Todo:
-  // On login, set token inside local storage
-  // If user is logged in, show button to logout
-  // Set up redux
   state = {
     formShown: false
   }
@@ -20,11 +16,10 @@ class Auth extends React.Component {
       formShown: form
     }, () => console.log(this.state))
   }
-  // later move to redux/mobx/etc. b/c right now, we need to refresh to see the new user, since our users component and auth component don't share state.
   formAction = (formState) => {
-    if (this.state.formShown === "signup") {
+    if (this.state.formShown === "Signup") {
       this.props.signup(formState);
-    } else if (this.state.formShown === "login") {
+    } else if (this.state.formShown === "Login") {
       this.props.login(formState);
     } else {
       alert("error - check state formShown value");
@@ -37,26 +32,33 @@ class Auth extends React.Component {
   }
   renderButtons = () => (
     <React.Fragment>
-      <button onClick={(e) => this.handleClick(e, "login")}>Login</button>
-      <button onClick={(e) => this.handleClick(e, "signup")}>Signup</button>
+      <button onClick={(e) => this.handleClick(e, "Login")}>Login</button>
+      <button onClick={(e) => this.handleClick(e, "Signup")}>Signup</button>
       {this.state.formShown ? this.renderForm() : null}
     </React.Fragment>
   )
   renderForm = () => (
-    <AuthInput title={this.state.formShown} formAction={this.formAction} hide={this.hide}/>
+    <AuthInput title={this.state.formShown} formShown={this.state.formShown} formAction={this.formAction} hide={this.hide}/>
+  )
+  renderLogOut = () => (
+    <div>
+      <h2>{this.props.userName}({this.props.email})</h2>
+      <button onClick={this.props.logout}>Logout</button>
+    </div>
   )
   render () {
-    //ToDo: Make button logout
     return (
       <div>
-        {this.props.loggedIn ? <button onClick={this.props.logout}>Logout</button> : this.renderButtons()}
+        {this.props.loggedIn ? this.renderLogOut() : this.renderButtons()}
       </div>
     )
   }
 }
 const mapStateToProps = (store) => {
   return {
-    loggedIn: store.currentUser.authenticated
+    loggedIn: store.currentUser.authenticated,
+    userName: store.currentUser.name,
+    email: store.currentUser.email
   }
 }
 
