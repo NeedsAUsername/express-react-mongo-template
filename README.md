@@ -1,13 +1,15 @@
 # Summary
-- template for a express/react/mongo app with passport/JWT user authentication and working signup/login/logout forms.
+  - website for logging patient data into a medical database
+  - users are doctors (read only) and admin (read/write)
 # Features
-- Connected React
-- Connected MongoDB
-- Set Up User Auth in Express with JWT and Passport
-- Set Up User Authentication in React side
-  - login/signup/logout forms working
-  - stores token in local storage and include in header
-  - fetches user on app mount if local storage has token
+- uses my express-react-mongo-template at https://github.com/NeedsAUsername/express-react-mongo-template
+  - Connected React
+  - Connected MongoDB
+  - Set Up User Auth in Express with JWT and Passport
+  - Set Up User Authentication in React side
+    - login/signup/logout forms working
+    - stores token in local storage and include in header
+    - fetches user on app mount if local storage has token
 # Setup
 $ npm install
 
